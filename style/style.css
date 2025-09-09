@@ -1,0 +1,107 @@
+*{
+    margin: 0;
+}
+
+.site-init{
+    text-transform: uppercase;
+    text-align: center;
+    font-style: italic;
+}
+
+body{
+    background-color: lightblue;
+}
+
+img {
+    max-width: 100%; /* Responsive */
+}
+
+.gallery {
+    display: grid;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Media Queries - Pantallas pequeñas (1 columna) */
+@media (max-width: 768px) {
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+    .gallery-item {
+        max-width: 100%;
+    }
+}
+
+/* Media Queries - Pantallas grandes (múltiples columnas) */
+@media (min-width: 769px) {
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
+}
+
+.gallery-item {
+    position: relative;  
+    background: blue;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    overflow: hidden;    
+}
+
+.gallery-item img {
+    display: block;
+    width: 100%;
+    border-radius: 10px;
+    transition: filter 0.3s ease; /* transición suave */
+}
+
+/* efecto borroso y oscurecido al pasar el mouse */
+.gallery-item:hover img {
+    filter: blur(4px) brightness(70%);
+}
+.gallery-item .info {
+    position: absolute;
+    top: 50%;   
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.4);   
+    backdrop-filter: blur(6px);    
+    color: white;
+    text-align: center;
+    padding: 15px 20px;
+    border-radius: 10px;
+    opacity: 0;                    /* oculto por defecto */
+    transition: opacity 0.3s ease;
+}
+.gallery-item:hover .info {
+    opacity: 1; /* aparece al pasar el mouse */
+}
+.gallery-item .info h3 {
+    font-size: 22px;   /* más grande */
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.gallery-item .info p {
+    font-size: 18px;   /* más chico */
+    margin: 0;
+}
+.gallery-item video {
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+    transition: filter 0.3s ease;
+}
+
+.gallery-item:hover video {
+    filter: blur(4px) brightness(70%);
+}
+footer{
+    text-align: center;
+    padding: 8px;
+    color: white;
+    background-color: black;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
